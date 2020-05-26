@@ -1,2 +1,2 @@
-# Cashback
-Teste GB
+# Projeto Cashback Revendedora
+Projeto teste para GB
