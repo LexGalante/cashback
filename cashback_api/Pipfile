@@ -1,0 +1,28 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+autopep8 = "*"
+Faker = "*"
+pytest = "*"
+pytest-flask = "*"
+pytest-mock = "*"
+pytest-cov = "*"
+
+[packages]
+flask = "*"
+python-dotenv = "*"
+flask-restful = "*"
+pymongo = "*"
+flask-mongoengine = "*"
+mongoengine = "*"
+marshmallow = "*"
+bcrypt = "*"
+PyJWT = "*"
+Flask-JWT-Extended = "*"
+pytest = "*"
+
+[requires]
+python_version = "3.7"

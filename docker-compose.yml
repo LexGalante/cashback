@@ -1,0 +1,59 @@
+version: "3.4"
+
+services:
+  mongo:
+    container_name: cashback_database
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017    
+    networks:
+      - cashback-network
+    environment:
+      - MONGO_INITDB_DATABASE=cashback
+
+  mongo-seed:
+    container_name: cashback_database_seed
+    build: ./cashback_database
+    restart: "on-failure"
+    ports:
+      - 8082:8082
+    environment:
+      MONGODB_URI: "mongodb://mongo:27017/"
+    depends_on:
+      - mongo
+    links:
+      - mongo
+    networks:
+      - cashback-network
+      
+  mongo-express:
+    image: mongo-express
+    container_name: cashback_database_manager
+    ports:
+      - 8081:8081
+    links:
+      - mongo
+    networks:
+      - cashback-network
+      
+  api:
+    container_name: cashback_api
+    build: ./cashback_api
+    restart: always
+    ports:
+      - 5000:5000
+    environment:
+      SECRET_KEY: CashbackSecret!
+      MONGODB_URI: "mongodb://mongo:27017/cashback"
+      PORT: 5000
+    depends_on:
+      - mongo
+    links:
+      - mongo
+    networks:
+      - cashback-network
+
+networks:
+  cashback-network:
+    driver: bridge
