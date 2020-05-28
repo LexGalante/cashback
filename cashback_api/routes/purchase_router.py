@@ -8,23 +8,26 @@ from mongoengine.errors import ValidationError as MongoValidationError
 from resources.errors import NotFoundError
 from resources.http_response import bad_request, error, ok
 from resources.jwt import authorize
-from schemas.reseller_create_schema import ResellerPurchaseCreateSchema
 from services.cashback_service import CashbackService
+
+from .schemas.purchase_schema import PurchaseSchema
 
 
 class PurchaseRouter(Resource):
     def __init__(self):
         self.cashbackService = CashbackService()
-        self.purchaseCreateSchema = ResellerPurchaseCreateSchema()
+        self.purchaseSchema = PurchaseSchema()
 
     @jwt_required
     @authorize(["manager", "support", "default"])
     def get(self):
         try:
             cpf = get_jwt_identity()
-            return self.cashbackService.get_purchases(cpf)
+            purchases = self.cashbackService.get_purchases(cpf)
         except Exception as e:
             return error(e)
+        else:
+            return ok(data=purchases)
 
     @jwt_required
     @authorize(["manager", "support", "default"])
@@ -35,7 +38,15 @@ class PurchaseRouter(Resource):
 
         try:
             cpf = get_jwt_identity()
-            data = self.purchaseCreateSchema.load(json)
+            data = self.purchaseSchema.load(json)
             self.cashbackService.register_purchase(cpf, data)
+        except NotUniqueError:
+            return bad_request("This sale code is already in use")
+        except MongoValidationError as e:
+            return bad_request('Error storage', e.message)
+        except SchemaValidationError as e:
+            return bad_request('Invalid request', e.messages)
         except Exception as e:
             return error(e)
+        else:
+            return ok(data=f'Sale {json["code"]} saved')

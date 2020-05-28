@@ -23,6 +23,7 @@ bcrypt = "*"
 PyJWT = "*"
 Flask-JWT-Extended = "*"
 pytest = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"

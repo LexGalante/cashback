@@ -23,17 +23,17 @@ def authorize(roles):
                     if role in claims["roles"]:
                         return fn(*args, **kwargs)
                 else:
-                    return jsonify({
+                    return make_response(jsonify({
                         "status": False,
                         "message": "Access denied"
-                    }), 403
+                    }), 403)
             elif roles in claims["roles"]:
                 return fn(*args, **kwargs)
             else:
-                return jsonify({
+                return make_response(jsonify({
                     'status': False,
                     'message': "Access denied"
-                }), 403
+                }), 403)
         return wrapper
     return authorize_by_roles
 
@@ -61,7 +61,7 @@ def configure_jwt(app):
         return make_response(jsonify({
             'status': False,
             'sub_status': 1,
-            'message': 'Token expirado'
+            'message': 'Expired token'
         }), 401)
 
     @jwt.unauthorized_loader
@@ -70,7 +70,7 @@ def configure_jwt(app):
             'status': False,
             'sub_status': 2,
             'description': e,
-            'message': 'Credenciais Inválidas'
+            'message': 'Invalid credentials'
         }), 401)
 
     @jwt.claims_verification_loader
@@ -79,7 +79,7 @@ def configure_jwt(app):
             'status': False,
             'sub_status': 3,
             'description': e,
-            'message': 'Credenciais Inválidas'
+            'message': 'Invalid credentials'
         }), 401)
 
     @jwt.invalid_token_loader
@@ -88,7 +88,7 @@ def configure_jwt(app):
             'status': False,
             'sub_status': 4,
             'description': e,
-            'message': 'Credenciais Inválidas'
+            'message': 'Invalid credentials'
         }), 401)
 
     @jwt.needs_fresh_token_loader
@@ -97,7 +97,7 @@ def configure_jwt(app):
             'status': False,
             'sub_status': 5,
             'description': e,
-            'message': 'Credenciais Inválidas'
+            'message': 'Invalid credentials'
         }), 401)
 
     @jwt.revoked_token_loader
@@ -106,7 +106,7 @@ def configure_jwt(app):
             'status': False,
             'sub_status': 6,
             'description': e,
-            'message': 'Credenciais Inválidas'
+            'message': 'Invalid credentials'
         }), 401)
 
     @jwt.user_loader_callback_loader
@@ -115,7 +115,7 @@ def configure_jwt(app):
             'status': False,
             'sub_status': 6,
             'description': e,
-            'message': 'Credenciais Inválidas'
+            'message': 'Invalid credentials'
         }), 401)
 
     @jwt.user_loader_error_loader
@@ -124,7 +124,7 @@ def configure_jwt(app):
             'status': False,
             'sub_status': 7,
             'description': e,
-            'message': 'Credenciais Inválidas'
+            'message': 'Invalid credentials'
         }), 401)
 
     @jwt.token_in_blacklist_loader
@@ -133,7 +133,7 @@ def configure_jwt(app):
             'status': False,
             'sub_status': 8,
             'description': e,
-            'message': 'Credenciais Inválidas'
+            'message': 'Invalid credentials'
         }), 401)
 
     @jwt.claims_verification_failed_loader
@@ -142,5 +142,5 @@ def configure_jwt(app):
             'status': False,
             'sub_status': 9,
             'description': e,
-            'message': 'Credenciais Inválidas'
+            'message': 'Invalid credentials'
         }), 401)

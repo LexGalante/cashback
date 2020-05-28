@@ -23,7 +23,8 @@ def seed_resellers(cashback):
                     "status_code": 1,
                     "status_description": "Aprovado",
                     "created_by": "06909142969",
-                    "created_at": datetime.now()
+                    "created_at": datetime.now(),
+                    "cashback": 15.00
                 },
                 {
                     "code": "V00002",
@@ -32,7 +33,8 @@ def seed_resellers(cashback):
                     "status_code": 1,
                     "status_description": "Aprovado",
                     "created_by": "06909142969",
-                    "created_at": datetime.now()
+                    "created_at": datetime.now(),
+                    "cashback": 10.00
                 },
                 {
                     "code": "V00003",
@@ -41,7 +43,8 @@ def seed_resellers(cashback):
                     "status_code": 1,
                     "status_description": "Aprovado",
                     "created_by": "06909142969",
-                    "created_at": datetime.now()
+                    "created_at": datetime.now(),
+                    "cashback": 10.00
                 }
             ],
             "created_by": "06909142969",
@@ -65,7 +68,8 @@ def seed_resellers(cashback):
                     "status_code": 1,
                     "status_description": "Aprovado",
                     "created_by": "06909142969",
-                    "created_at": datetime.now()
+                    "created_at": datetime.now(),
+                    "cashback": 10.00
                 }
             ],
             "created_by": "06909142969",
@@ -73,4 +77,29 @@ def seed_resellers(cashback):
             "updated_by": "06909142969",
             "updated_at": datetime.now()
         },
+        {
+            "name": "Luke",
+            "last_name": "Skywalker",
+            "cpf": "15350946057",
+            "email": "luke@cashback.com",
+            "password": hashpw("123456".encode('utf-8'), gensalt(12)),
+            "active": True,
+            "roles": [],
+            "purchases": [
+                {
+                    "code": "V00035",
+                    "value": 556.66,
+                    "date": datetime.now(),
+                    "status_code": 0,
+                    "status_description": "Em Validação",
+                    "created_by": "06909142969",
+                    "created_at": datetime.now(),
+                    "cashback": 10.00
+                }
+            ],
+            "created_by": "06909142969",
+            "created_at": datetime.now(),
+            "updated_by": "06909142969",
+            "updated_at": datetime.now()
+        }
     ])

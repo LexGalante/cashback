@@ -7,8 +7,6 @@ from os.path import join
 from pymongo import MongoClient
 from dotenv import load_dotenv
 from seeds.reseller_seed import seed_resellers
-from seeds.bonus_seed import seed_bonus
-from seeds.role_seed import seed_roles
 
 
 # aguardamos 30 segundos para iniciar a rotina
@@ -29,8 +27,6 @@ if "cashback" not in databases:
         cashback = mongo["cashback"]
         seed_resellers(cashback)
         print("filled initial resellers")
-        seed_bonus(cashback)
-        print("filled initial bonuses")
     except:
         print("Error on database create and seed")
 
@@ -40,7 +36,5 @@ if "cashback_test" not in databases:
         cashback = mongo["cashback_test"]
         seed_resellers(cashback)
         print("filled initial roles")
-        seed_bonus(cashback)
-        print("filled initial bonuses")
     except:
         print("Error on test database create and seed")

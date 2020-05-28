@@ -40,8 +40,9 @@ class ResellerRouter(Resource):
             data = self.resellerCreateSchema.load(json)
             data["created_by"] = get_jwt_identity()
             data["updated_by"] = get_jwt_identity()
-            for purchase in data["purchases"]:
-                purchase["created_by"] = get_jwt_identity()
+            if "purchases" in data.keys():
+                for purchase in data["purchases"]:
+                    purchase["created_by"] = get_jwt_identity()
 
             reseller = self.resellerService.create(data)
         except NotUniqueError:

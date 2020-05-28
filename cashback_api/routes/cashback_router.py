@@ -8,14 +8,20 @@ from mongoengine.errors import ValidationError as MongoValidationError
 from resources.errors import NotFoundError
 from resources.http_response import bad_request, error, ok
 from resources.jwt import authorize
-from services.reseller_service import ResellerService
+from services.cashback_service import CashbackService
 
 
 class CashbackRouter(Resource):
     def __init__(self):
-        self.resellerService = ResellerService()
+        self.cashbackService = CashbackService()
 
     @jwt_required
     @authorize(["manager", "support", "default"])
     def get(self):
-        pass
+        try:
+            cpf = get_jwt_identity()
+            cashback = self.cashbackService.calcule_cashback(cpf)
+        except Exception as e:
+            return error(e)
+        else:
+            return ok(data=cashback)

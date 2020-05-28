@@ -15,3 +15,4 @@ class ResellerPurchase(mongo.EmbeddedDocument):
         required=True, max_length=50, default="In Validation")
     created_by = StringField(required=True)
     created_at = DateTimeField(default=datetime.now)
+    cashback = FloatField(required=True, min_value=0, max_value=100)

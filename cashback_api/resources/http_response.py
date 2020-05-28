@@ -1,4 +1,5 @@
 from flask import Response, jsonify, make_response
+from resources.logger import log_info, log_error, log_warning
 
 
 def ok(message="Sucesso", data={}):
@@ -11,6 +12,7 @@ def ok(message="Sucesso", data={}):
 
 
 def created(message="", data={}):
+    log_info("created new entity")
     """HTTP Response 201"""
     return make_response(jsonify({
         'status': True,
@@ -20,11 +22,13 @@ def created(message="", data={}):
 
 
 def no_content():
+    log_warning("no content resource trigerred")
     """HTTP Response 204"""
     return Response(status=204)
 
 
-def bad_request(message='Ocorreram erros verifique', errors={}):
+def bad_request(message='ops!!!', errors={}):
+    log_warning(f'{message}, {errors}')
     """HTTP Response 400"""
     return make_response(jsonify({
         'status': False,
@@ -34,14 +38,16 @@ def bad_request(message='Ocorreram erros verifique', errors={}):
 
 
 def unathorized():
+    log_warning("Attempt to access resource without authorization")
     """HTTP Response 401"""
     return make_response(jsonify({
         'status': False,
-        'message': 'Sem autorização',
+        'message': 'Unathorized',
     }), 401)
 
 
-def error(message='Ocorreu um erro inesperado', e=None):
+def error(message='ops!!!', e=None):
+    log_warning(f'{message}, {str(e)}')
     """HTTP Response 500"""
     return make_response(jsonify({
         'status': False,

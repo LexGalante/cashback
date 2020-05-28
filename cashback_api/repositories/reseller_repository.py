@@ -2,8 +2,8 @@ from datetime import datetime
 from resources.errors import NotFoundError
 
 from bcrypt import checkpw, gensalt, hashpw
-from repositories.bonus_repository import BonusRepository
 from models.reseller import Reseller
+from models.reseller_purchase import ResellerPurchase
 
 
 class ResellerRepository():
@@ -24,11 +24,6 @@ class ResellerRepository():
 
         return Reseller.objects(cpf=cpf).first()
 
-    def get_by_filter(self, filter, **kwargs):
-        fields = kwargs.get("fields") or self.default_fields
-
-        return Reseller.object(filter).only(*fields).select_related()
-
     def create(self, json: dict):
         reseller = Reseller(**json)
         reseller.save()
@@ -39,15 +34,9 @@ class ResellerRepository():
         reseller = Reseller.objects(cpf=cpf).first()
         if reseller is None:
             raise NotFoundError(f"Reseller cpf: {cpf} not found")
-
-        if "password" in json.keys():
-            json["password"] = str(hashpw(
-                json["password"].encode('utf-8'), gensalt(12)))
-
         for key, value in json.items():
             reseller[key] = value
         reseller.save()
-        reseller["password"] = None
 
         return reseller
 
@@ -60,3 +49,11 @@ class ResellerRepository():
 
     def login(self, reseller: Reseller, password: str) -> bool:
         return checkpw(password.encode('utf-8'), reseller.password.encode('utf-8'))
+
+    def add_purchase(self, reseller: Reseller, json: dict):
+        purchase = ResellerPurchase(**json)
+        reseller.updated_by = reseller.cpf
+        reseller.updated_at = datetime.now()
+        reseller.purchases.append(purchase)
+
+        reseller.save()

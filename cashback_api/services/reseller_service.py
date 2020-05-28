@@ -36,6 +36,8 @@ class ResellerService():
         if "purchases" in json.keys() and len(json["purchases"]) == 0:
             del json["purchases"]
 
+        if "password" in json.keys():
+            del json["password"]
         json["updated_at"] = datetime.now()
         reseller = self.resellerRepository.update(cpf, json)
         reseller["password"] = None

@@ -23,5 +23,4 @@ def create_app(configuration_name: str) -> Flask:
     configure_jwt(app)
     # load mongengine
     configure_mongo(app)
-
     return app
