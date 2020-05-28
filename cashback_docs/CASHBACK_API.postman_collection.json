@@ -1,0 +1,313 @@
+{
+	"info": {
+		"_postman_id": "e53ab8be-5315-4a23-bd83-4dca92a4743a",
+		"name": "CASHBACK_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "{{url_base}}/auth/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Chaves\",\r\n\t\"last_name\": \"Kiko\",\r\n\t\"cpf\": \"11111111111\",\r\n\t\"email\": \"kiko@cashback.com\",\r\n\t\"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_base}}/auth/register",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url_base}}/auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"cpf\": \"06909142969\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_base}}/auth",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url_base}}/reseller",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTA2ODAxMTEsIm5iZiI6MTU5MDY4MDExMSwianRpIjoiYjI5NGMwZDYtMjVkNi00YWI1LTlkYWUtODVmYWZkZjA5NzFkIiwiZXhwIjoxNTkwNjgxMzExLCJpZGVudGl0eSI6IjA2OTA5MTQyOTY5IiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsicm9sZXMiOlsibWFuYWdlciIsInN1cHBvcnQiXX19.R_fYLbAjPFg66C_hCFhplHLdkvNknFzLM89jGq_VUrg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Cilano\",\r\n\t\"last_name\": \"Pafuncio\",\r\n\t\"cpf\": \"97358425058\",\r\n\t\"password\": \"123456\",\r\n\t\"email\": \"ciclano@cashback.com\",\r\n\t\"active\": true,\r\n\t\"roles\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_base}}/reseller",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"reseller"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url_base}}/reseller/35323945885",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTA2ODAxMTEsIm5iZiI6MTU5MDY4MDExMSwianRpIjoiYjI5NGMwZDYtMjVkNi00YWI1LTlkYWUtODVmYWZkZjA5NzFkIiwiZXhwIjoxNTkwNjgxMzExLCJpZGVudGl0eSI6IjA2OTA5MTQyOTY5IiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsicm9sZXMiOlsibWFuYWdlciIsInN1cHBvcnQiXX19.R_fYLbAjPFg66C_hCFhplHLdkvNknFzLM89jGq_VUrg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Bill\",\r\n\t\"last_name\": \"Gates\",\r\n\t\"active\": true,\r\n\t\"roles\": [\"manager\", \"support\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_base}}/reseller/97358425058",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"reseller",
+						"97358425058"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url_base}}/reseller/35323945885",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTA2ODAxMTEsIm5iZiI6MTU5MDY4MDExMSwianRpIjoiYjI5NGMwZDYtMjVkNi00YWI1LTlkYWUtODVmYWZkZjA5NzFkIiwiZXhwIjoxNTkwNjgxMzExLCJpZGVudGl0eSI6IjA2OTA5MTQyOTY5IiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsicm9sZXMiOlsibWFuYWdlciIsInN1cHBvcnQiXX19.R_fYLbAjPFg66C_hCFhplHLdkvNknFzLM89jGq_VUrg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url_base}}/reseller/97358425058",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"reseller",
+						"97358425058"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url_base}}/reseller/1/10",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTA2ODAxMTEsIm5iZiI6MTU5MDY4MDExMSwianRpIjoiYjI5NGMwZDYtMjVkNi00YWI1LTlkYWUtODVmYWZkZjA5NzFkIiwiZXhwIjoxNTkwNjgxMzExLCJpZGVudGl0eSI6IjA2OTA5MTQyOTY5IiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsicm9sZXMiOlsibWFuYWdlciIsInN1cHBvcnQiXX19.R_fYLbAjPFg66C_hCFhplHLdkvNknFzLM89jGq_VUrg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_base}}/reseller",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"reseller"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url_base}}/auth/refresh",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTA2ODAwNjEsIm5iZiI6MTU5MDY4MDA2MSwianRpIjoiYWJlNDc5YWYtYmQ0NC00ZTc3LWIxZTktY2RmMTQ1YzgxMDZlIiwiZXhwIjoxNTkzMjcyMDYxLCJpZGVudGl0eSI6IjExMTExMTExMTExIiwidHlwZSI6InJlZnJlc2gifQ.CU3r6BBoN4mZjeXwjf0-CcNA7LTko9wQGRbFeQzlOlI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url_base}}/auth/refresh",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"auth",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url_base}}/purchase",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTA2ODAxMTEsIm5iZiI6MTU5MDY4MDExMSwianRpIjoiYjI5NGMwZDYtMjVkNi00YWI1LTlkYWUtODVmYWZkZjA5NzFkIiwiZXhwIjoxNTkwNjgxMzExLCJpZGVudGl0eSI6IjA2OTA5MTQyOTY5IiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsicm9sZXMiOlsibWFuYWdlciIsInN1cHBvcnQiXX19.R_fYLbAjPFg66C_hCFhplHLdkvNknFzLM89jGq_VUrg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"code\": \"V0007\",\n\t\"value\": 502.99,\n\t\"date\": \"2020-05-13 08:15:27\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_base}}/purchase",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"purchase"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url_base}}/purchase",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTA2ODAxMTEsIm5iZiI6MTU5MDY4MDExMSwianRpIjoiYjI5NGMwZDYtMjVkNi00YWI1LTlkYWUtODVmYWZkZjA5NzFkIiwiZXhwIjoxNTkwNjgxMzExLCJpZGVudGl0eSI6IjA2OTA5MTQyOTY5IiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsicm9sZXMiOlsibWFuYWdlciIsInN1cHBvcnQiXX19.R_fYLbAjPFg66C_hCFhplHLdkvNknFzLM89jGq_VUrg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_base}}/purchase",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"purchase"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{url_base}}/cashback",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTA2ODAxMTEsIm5iZiI6MTU5MDY4MDExMSwianRpIjoiYjI5NGMwZDYtMjVkNi00YWI1LTlkYWUtODVmYWZkZjA5NzFkIiwiZXhwIjoxNTkwNjgxMzExLCJpZGVudGl0eSI6IjA2OTA5MTQyOTY5IiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsicm9sZXMiOlsibWFuYWdlciIsInN1cHBvcnQiXX19.R_fYLbAjPFg66C_hCFhplHLdkvNknFzLM89jGq_VUrg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_base}}/cashback",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"cashback"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
