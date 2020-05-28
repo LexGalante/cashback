@@ -3,7 +3,7 @@ FROM python:3.7
 # atualizando o pip
 RUN pip install --upgrade pip
 # setando as variaveis de ambiente
-ENV HOME=/home/antharas_seed \
+ENV HOME=/home/cashback_seed \
     MONGODB_URI="mongodb://localhost:27017/"
 # seta apasta da app para proximos comandos
 WORKDIR $HOME

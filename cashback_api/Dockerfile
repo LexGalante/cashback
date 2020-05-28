@@ -2,7 +2,7 @@ FROM python:3.7
 RUN pip install --upgrade pip && \
     pip install pipenv
 # definindo a pasta da app
-ENV HOME=/home/antharas \
+ENV HOME=/home/cashback \
     DEBUG=False \
     PORT=5000 \
     SECRET_KEY="CashbackSecret!" \

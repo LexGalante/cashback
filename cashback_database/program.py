@@ -35,6 +35,6 @@ if "cashback_test" not in databases:
     try:
         cashback = mongo["cashback_test"]
         seed_resellers(cashback)
-        print("filled initial roles")
+        print("filled initial resellers")
     except:
         print("Error on test database create and seed")

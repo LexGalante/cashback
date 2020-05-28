@@ -6,5 +6,5 @@ class AuthService():
     def __init__(self):
         self.resellerRepository = ResellerRepository()
 
-    def login(self, reseller: Reseller, password: str):
+    def login(self, reseller: Reseller, password: str) -> bool:
         return self.resellerRepository.login(reseller, password)
