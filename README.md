@@ -21,7 +21,7 @@ Projeto para teste GB
     ```    
     docker-compose build
     ```
-- Caso já tenha alguma delas e queir se certificar que todos as imagens serão criadas execute
+- Caso já tenha alguma delas e queira se certificar que todas as imagens serão criadas execute-as
 	```
 	docker-compose build --no-cache
 	```
@@ -75,7 +75,7 @@ Projeto para teste GB
 	```
 
 ## Testes
-- Para executar a bateria de teste voce precisará do gerenciador de pacotes [pipenv](https://pypi.org/project/pipenv/)
+- Para executar a bateria de teste você precisará do gerenciador de pacotes [pipenv](https://pypi.org/project/pipenv/)
 - Via linha de comando na pasta cashback_api execute o comando abaixo para acessar o [pipenv](https://pypi.org/project/pipenv/)
 	```
 	pipenv shell
